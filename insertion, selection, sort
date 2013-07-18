@@ -1,0 +1,82 @@
+include <stdio.h>
+#include <stdlib.h>
+
+void ordenar1 (int matrix[100]) //insertion sort
+{
+  int i,aux,j;
+	for (i = 1; i < 100; i++)
+	{
+		aux = matrix[i];
+		j = i;
+		while (matrix[j-1] > aux && j > 0)
+		{
+			matrix[j] = matrix[j-1];
+			j--;
+		}
+			
+		matrix[j] = aux;
+	}
+}
+
+void ordenar2 (int matrix[100]) //selection sort
+{
+	int i,j,min,temp;
+	for (i = 0; i<100; i++)
+	{
+		min=i;
+		for (j=i; j<100; j++)
+		{
+			if (matrix[j] < matrix[min])
+				min=j;
+		}
+		if (min != i)
+		{
+			temp=matrix[i];
+			matrix[i]=matrix[min];
+			matrix[min]=temp;
+		}
+	}
+}
+	
+
+void fill (int matrix[100]) //para preencher os vectores
+{
+	int i;
+	for (i=0; i<100 ; i++)
+	{
+		matrix[i]=rand()%100;
+	}
+}
+
+
+int main () 
+{
+	int i,matrix[100];
+	char option;
+	srand((unsigned)time(NULL));
+	fill(matrix);
+	printf("Escolha uma das seguintes opções\n");
+	printf("I - Insertion Sort\n");
+	printf("S - Selection Sort\n");
+	scanf("%c",&option);
+	switch (option)
+	{
+		case 'i':
+		{
+			ordenar1(matrix);
+			for (i = 0; i<100; i++) //para imprimir o vector
+				printf("%d\n",matrix[i]);
+			break;
+		}
+		case 's':
+		{
+			ordenar2(matrix);
+			for (i = 0; i<100; i++) //para imprimir o vector
+				printf("%d\n",matrix[i]);
+			break;
+		}
+		default: printf("Erro na escolha\n"); break;
+	}
+
+    return 0;
+}
