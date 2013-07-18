@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int totoloto (int bola[6])
+{
+  int i,j,r,flag;
+	for (i=0; i<6; i++)
+	{
+		do {
+			flag=0;
+			r=(rand()%49)+1;
+			for (j=0; j<i; j++)
+			{
+				if(bola[j]==r)
+					flag=1;
+			}
+		}while (flag==1);
+		bola[i]=r;
+		printf("%d\n",bola[i]);
+	}
+}
+
+int ordenar (int bola[6])
+{
+	int i,j,temp;
+	printf("\n \n \n");
+	for (i=6-1; i>=1; i--)
+	{
+		for (j=0;j<i;j++)
+		{
+			if (bola[j]>bola[j+1])
+			{
+				temp=bola[j];
+				bola[j]=bola[j+1];
+				bola[j+1]=temp;
+			}
+		}
+	}
+	for (i=0; i<6; i++)
+		printf("%d\n",bola[i]);
+}
+
+
+int main () 
+{
+	int bola[6];
+	srand((unsigned)time(NULL));
+	totoloto(bola);
+	ordenar(bola);
+	return 0;
+}
