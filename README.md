@@ -1,4 +1,4 @@
 school-works
 ============
 
-some programs i did while attending school
+some C programs i did while attending school
